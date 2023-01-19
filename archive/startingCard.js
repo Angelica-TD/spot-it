@@ -8,7 +8,7 @@ function getStartingCard(deckOrPlayer){
 
     if (deckOrPlayer === 'player'){
 
-        commonImages = getTwoRandomImages();
+        commonImages = getTwoRandomImages(true);
 
         numberOfImagesNeeded = 6;
 

@@ -1,107 +1,34 @@
+let dcContainer = document.getElementById('deckCardContainer');
+
+let p1cContainer = document.getElementById('player1CardContainer');
+
+let p2cContainer = document.getElementById('player2CardContainer');
+
+let p1Button = document.getElementById('addToPlayer1');
+
+let p2Button = document.getElementById('addToPlayer2');
 
 let playerNumber = 2;
 let playerCount = 1;
 let playersObject = {};
 
-// let eightImages = [];
-// let deckStartingCard = [];
-// let playerStartingCard = [];
-// let commonImages = [];
+let deckStartingCard = getCard('deck');
+let currentDeckCard = deckStartingCard;
 
-
-let deckStartingCard = getStartingCard('deck');
-// let playerStartingCard = getStartingCard('player');
+p1Button.addEventListener('click', () => {
+        addToPlayer(currentDeckCard);
+        currentDeckCard = getCard('next');
+        dcContainer.innerText = currentDeckCard;
+    });
 
 while (playerCount <= playerNumber){
-
-    playersObject[`player${playerCount}`] = getStartingCard('player');
-    
+    playersObject[`player${playerCount}`] = getCard('player');
     playerCount++;
-
 }
+
+dcContainer.innerText = deckStartingCard;
+p1cContainer.innerText = playersObject.player1;
+p2cContainer.innerText = playersObject.player2;
 
 console.log(deckStartingCard);
 console.log(playersObject);
-
-// function getStartingDeckCard(){
-//     deckStartingCard = [];
-//     let randomImageIndex;
-//     let imageCount = 0;
-//     let imageListCopy = imageList.filter(()=>{
-//         return true;
-//     });
-//     while (imageCount < 8){
-
-//         randomImageIndex = Math.floor( Math.random() * imageListCopy.length );
-//         deckStartingCard.push(imageListCopy[randomImageIndex]);
-//         imageListCopy.splice(randomImageIndex, 1);
-
-//         imageCount++;
-//     }
-//     return deckStartingCard;
-// }
-
-// function getStartingPlayerCard(commonImages){
-//     playerStartingCard = [];
-//     let randomImageIndex;
-//     let imageCount = 0;
-//     let imageListCopy = imageList.filter((el)=>{
-//         return commonImages.indexOf(el) < 0;
-//     });
-//     while (imageCount < 6){
-
-//         randomImageIndex = Math.floor( Math.random() * imageListCopy.length );
-//         playerStartingCard.push(imageListCopy[randomImageIndex]);
-//         imageListCopy.splice(randomImageIndex, 1);
-
-//         imageCount++;
-//     }
-//     playerStartingCard = playerStartingCard.concat(commonImages);
-
-//     return playerStartingCard.sort(()=>0.5 - Math.random());
-// }
-
-// console.log(getStartingDeckCard());
-// console.log(getTwoRandomImages());
-// console.log(getStartingPlayerCard(commonImages));
-// console.log(commonImages);
-
-// function getEightImages(){
-//     eightImages = [];
-//     eightImages.concat(getTwoRandomImages());
-//     let randomImageIndex;
-//     let imageCount = 0;
-//     let imageListCopy = imageList.filter(()=>{
-//         return true;
-//     });
-
-//     while (imageCount < 8){
-
-//         randomImageIndex = Math.floor( Math.random() * imageListCopy.length );
-//         eightImages.push(imageListCopy[randomImageIndex]);
-//         imageListCopy.splice(randomImageIndex, 1);
-
-//         imageCount++;
-//     }
-//     return eightImages;
-// }
-
-// function getPlayerdeckStartingCards(playerNumber){
-//     let playerCount = 1;
-//     while (playerCount <= playerNumber){
-//         playersObject[`player${playerCount}`] = getStartingPlayerCard();
-//         playerCount++;
-//     }
-
-//     // return playersObject;
-// }
-
-
-
-// getPlayerdeckStartingCards(playerNumber);
-// getEightImages();
-
-// console.log(getPlayerdeckStartingCards(playerNumber));
-// console.log(playersObject);
-// console.log(getEightImages());
-// console.log(getTwoRandomImages());
